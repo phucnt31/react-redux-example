@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { convertString } from "../utils/convertString";
 import { toast } from "react-toastify";
+import { nanoid } from "nanoid";
 
 const initialState = {
   items: [],
@@ -13,7 +14,7 @@ const exampleSlice = createSlice({
     addItems: (state, { payload }) => {
       const newName = convertString(payload.name);
       const newItem = {
-        id: new Date().getTime().toString(),
+        id: nanoid(),
         name: newName,
       };
       if (state.items.length === 3) {
